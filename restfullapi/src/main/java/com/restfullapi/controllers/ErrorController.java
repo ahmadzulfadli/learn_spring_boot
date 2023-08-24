@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 import com.restfullapi.model.WebResponse;
 
-import jakarta.validation.ConstraintViolationException;
-
 @RestControllerAdvice
 public class ErrorController {
     
