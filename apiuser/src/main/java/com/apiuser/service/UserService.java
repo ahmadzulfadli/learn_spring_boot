@@ -1,4 +1,4 @@
-package com.restfullapi.service;
+package com.apiuser.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,12 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.restfullapi.entity.User;
-import com.restfullapi.model.RegisterUserRequest;
-import com.restfullapi.model.UpdateUserRequest;
-import com.restfullapi.model.UserResponse;
-import com.restfullapi.repository.UserRepository;
-import com.restfullapi.security.BCrypt;
+import com.apiuser.entity.User;
+import com.apiuser.model.RegisterUserRequest;
+import com.apiuser.model.UpdateUserRequest;
+import com.apiuser.model.UserResponse;
+import com.apiuser.repository.UserRepository;
+import com.apiuser.security.BCrypt;
 
 import java.util.Objects;
 

@@ -1,0 +1,38 @@
+### Register
+POST  http://localhost:8080/
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Ahmad Joni",
+    "email": "ahmadjoni@gmail.com",
+    "phoneNumber": "08556831231",
+    "address": "Palembang",
+    "dateOfBirth": "2004-10-04"
+}
+
+### Get Data
+GET http://localhost:8080/3
+Accept: application/json
+
+### Get All Data
+GET http://localhost:8080/
+Accept: application/json
+
+### Update
+PUT  http://localhost:8080/3
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name":"Ahmad Joni",
+    "address":"Palembang",
+    "email":"ahmadjoni@gmail.com",
+    "phoneNumber":"08556831231",
+    "dateOfBirth":"2004-10-04"
+}
+
+### Delete Data
+DELETE http://localhost:8080/3
+Accept: application/json
+

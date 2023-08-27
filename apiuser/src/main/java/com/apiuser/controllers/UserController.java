@@ -1,15 +1,15 @@
-package com.restfullapi.controllers;
+package com.apiuser.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import com.restfullapi.entity.User;
-import com.restfullapi.model.RegisterUserRequest;
-import com.restfullapi.model.UpdateUserRequest;
-import com.restfullapi.model.WebResponse;
-import com.restfullapi.model.UserResponse;
-import com.restfullapi.service.UserService;
+import com.apiuser.entity.User;
+import com.apiuser.model.RegisterUserRequest;
+import com.apiuser.model.UpdateUserRequest;
+import com.apiuser.model.WebResponse;
+import com.apiuser.model.UserResponse;
+import com.apiuser.service.UserService;
 
 @RestController
 public class UserController {
@@ -30,10 +30,10 @@ public class UserController {
 
     //Url get user
     @GetMapping(
-        path = "/api/users/current",
-        produces = MediaType.APPLICATION_JSON_VALUE
+            path = "/api/users/current",
+            produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public WebResponse<UserResponse> get(User user){
+    public WebResponse<UserResponse> get(User user) {
         UserResponse userResponse = userService.get(user);
         return WebResponse.<UserResponse>builder().data(userResponse).build();
     }
@@ -45,7 +45,6 @@ public class UserController {
         produces = MediaType.APPLICATION_JSON_VALUE
     )
     public WebResponse<UserResponse> update(User user, @RequestBody UpdateUserRequest request){
-
         UserResponse userResponse = userService.update(user, request);
         return WebResponse.<UserResponse>builder().data(userResponse).build();
     }
