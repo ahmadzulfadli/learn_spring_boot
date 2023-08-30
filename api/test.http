@@ -4,15 +4,15 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "name": "Ahmad Joni",
+    "name": "AhmadJoni",
     "email": "ahmadjoni@gmail.com",
     "phoneNumber": "08556831231",
-    "address": "Palembang",
-    "dateOfBirth": "2004-10-04"
+    "address": "Pekanbaru",
+    "dateOfBirth": "2010-10-04"
 }
 
 ### Get Data
-GET http://localhost:8080/3
+GET http://localhost:8080/1
 Accept: application/json
 
 ### Get All Data
@@ -20,7 +20,7 @@ GET http://localhost:8080/
 Accept: application/json
 
 ### Update
-PUT  http://localhost:8080/3
+PUT  http://localhost:8080/2
 Accept: application/json
 Content-Type: application/json
 
@@ -33,6 +33,6 @@ Content-Type: application/json
 }
 
 ### Delete Data
-DELETE http://localhost:8080/3
+DELETE http://localhost:8080/102
 Accept: application/json
 
