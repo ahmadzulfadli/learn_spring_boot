@@ -4,9 +4,9 @@ import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,24 +20,14 @@ public class FileStorageController {
     @Autowired
     private FileStorageService fileStorageService;
 
-    @PostMapping(
-        path = "/upload",
-        consumes = MediaType.MULTIPART_FORM_DATA_VALUE, 
-        produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    public ResponseEntity<WebResponse<FileResponse>> uploadFile(@RequestPart("file") MultipartFile file) {
-        try {
-            FileResponse response = fileStorageService.uploadFile(file);
-            WebResponse<FileResponse> webResponse = WebResponse.<FileResponse>builder()
-                    .data(response)
-                    .build();
-            return ResponseEntity.ok(webResponse);
-        } catch (IOException e) {
-            WebResponse<FileResponse> errorResponse = WebResponse.<FileResponse>builder()
-                    .error("An error occurred during file upload.")
-                    .build();
-            return ResponseEntity.status(500).body(errorResponse);
-        }
-    }
+    @PostMapping("/upload")
+    public WebResponse<FileResponse> uploadFile(@RequestParam("file") MultipartFile file) throws IOException{
 
+        FileResponse fileResponse = fileStorageService.uploadFile(file);
+        WebResponse<FileResponse> webResponse = WebResponse.<FileResponse>builder()
+                .data(fileResponse)
+                .build();
+        return webResponse;
+
+    }
 }

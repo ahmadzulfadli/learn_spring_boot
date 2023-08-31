@@ -18,4 +18,5 @@ public class FileResponse {
     private String urlFile;
 
     private long size;
+
 }

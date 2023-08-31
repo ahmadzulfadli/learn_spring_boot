@@ -37,7 +37,7 @@ public class FileStorageService {
     // CREATE -------------------------------------------------------------------
     @Transactional
     public FileResponse uploadFile(MultipartFile request) throws IOException {
-        String uploadDir = "/media/upload";
+        String uploadDir = "/home/pr001/Desktop/SpringBoot/upload";
         String fileName = StringUtils.cleanPath(request.getOriginalFilename());
         long size = request.getSize();
         String fileUrl = saveFile(request, uploadDir, fileName);
