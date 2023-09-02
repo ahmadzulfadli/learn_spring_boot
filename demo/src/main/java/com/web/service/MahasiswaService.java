@@ -18,6 +18,9 @@ public class MahasiswaService {
     @Autowired
     private MahasiswaRepository mahasiswaRepository;
 
+    @Autowired
+    private ValidationService validationService;
+
     private MahasiswaResponse toMahasiswaResponse(Mahasiswa mahasiswa){
         return MahasiswaResponse.builder()
         .id(mahasiswa.getId())
@@ -30,6 +33,8 @@ public class MahasiswaService {
     // CREATE------------------------------------------------------------------
     @Transactional
     public MahasiswaResponse createMahasiswa(CreateMahasiswaRequest request){
+
+        validationService.validate(request);
 
         Mahasiswa addMahasiswa = new Mahasiswa();
 

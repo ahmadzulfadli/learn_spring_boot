@@ -12,9 +12,7 @@
   <!-- strat navbar -->
   <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-      <h1>
-        <a th:href="/@{/registrasi}">Registrasi</a>
-      </h1>
+      <a class="navbar-brand">Navbar</a>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -24,9 +22,13 @@
   <!-- end navbar -->
 
   <!-- konten -->
-  <div class="alert alert-info" role="alert">
-    A simple info alert—check it out!
+  <div class="alert alert-success" role="alert" th:if="${not #strings.isEmpty(successMsg)}">
+    <p th:text="${successMsg}"></p>
   </div>
+  <div class="alert alert-danger" role="alert" th:if="${not #strings.isEmpty(errorMsg)}">
+    <p th:text="${errorMsg}"></p>
+  </div>
+  
   <table class="table">
     <thead>
         <tr>
@@ -44,8 +46,8 @@
             <td th:text="${mahasiswa.phone}"></td>
             <td>
               <div class="d-grid gap-2 d-md-block">
-                <button type="button" class="btn btn-info">Edit</button>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-outline-info">Edit</button>
+                <button type="button" class="btn btn-outline-danger">Delete</button>              
               </div>           
             </td>
         </tr>
@@ -53,7 +55,7 @@
   </table>
   <!-- end konten -->
 
-
+  <!-- javascript -->
   <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
 </body>
