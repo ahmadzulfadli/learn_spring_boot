@@ -46,8 +46,8 @@
             <td th:text="${mahasiswa.phone}"></td>
             <td>
               <div class="d-grid gap-2 d-md-block">
-                <button type="button" class="btn btn-outline-info">Edit</button>
-                <button type="button" class="btn btn-outline-danger">Delete</button>              
+                <a th:href="@{/edit/{id}(id=${mahasiswa.id})}" class="btn btn-primary">Edit</a>
+                <a th:href="@{/delete/{id}(id=${mahasiswa.id})}" class="btn btn-danger">Delete</a>            
               </div>           
             </td>
         </tr>

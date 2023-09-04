@@ -7,11 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.model.CreateMahasiswaRequest;
 import com.web.model.MahasiswaResponse;
+import com.web.model.UpdateMahasiswaRequest;
 import com.web.service.MahasiswaService;
 
 @Controller
@@ -60,5 +62,23 @@ public class MahasiswaController {
         return "index";
     }
     // UPDATE------------------------------------------------------------------
+    @GetMapping("/edit/{id}")
+    public String editData(Model model, @PathVariable String id){
+            
+            MahasiswaResponse mahasiswaResponse = mahasiswaService.getMahasiswaById(id);
+            model.addAttribute("data", mahasiswaResponse);
+    
+            return "edit";
+    }
+    @PostMapping("/update/{id}")
+    public String updateData(@PathVariable String id,UpdateMahasiswaRequest request, RedirectAttributes redirectAttributes){
+        try{
+            mahasiswaService.updateMahasiswa(id, request); 
+            redirectAttributes.addFlashAttribute("success", "Success to update data to database");
+        }catch(Exception e){
+            redirectAttributes.addFlashAttribute("errors", "Field to update data, please try again");
+        }
+        return "redirect:/";
+    }
     // DELETE------------------------------------------------------------------
 }
